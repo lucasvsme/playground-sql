@@ -14,3 +14,4 @@ SELECT id, name FROM things;
 
 DELETE FROM things WHERE name LIKE '%er';
 SELECT count(id) FROM things;
+
