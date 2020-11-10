@@ -1,29 +1,14 @@
 DROP TABLE IF EXISTS cars;
-
 CREATE TABLE cars (
-    id serial PRIMARY KEY,
-    model varchar,
+    id SERIAL PRIMARY KEY,
+    model VARCHAR,
     attributes JSONB
 );
 
-INSERT INTO cars (model, attributes) VALUES (
-    'F250', '{
-    "brand": "Ford",
-    "release_year": 2020,
-    "category": "truck"}'
-);
-INSERT INTO cars (model, attributes) VALUES (
-    'Ranger', '{
-    "brand": "Toyota",
-    "release_year": 1989,
-    "category": "truck"}'
-);
-INSERT INTO cars (model, attributes) VALUES (
-    'Prius', '{
-    "brand": "Toyota",
-    "release_year": 2018,
-    "category": "sedan"}'
-);
+INSERT INTO cars (model, attributes) VALUES 
+('F250', '{"brand": "Ford","release_year": 2020,"category": "truck"}'),
+('Pickup', '{"brand": "Toyota","release_year": 1990,"category": "truck"}'),
+('Prius', '{"brand": "Toyota","release_year": 2020,"category": "compact"}');
 
 SELECT attributes->>'brand' AS brand, model
 FROM cars
