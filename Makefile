@@ -27,7 +27,7 @@ run:
 			--dbname=$(POSTGRES_DATABASE) \
 			--username=$(POSTGRES_USERNAME)
 
-TESTS = simple-crud json-column-type index-unique-btree
+TESTS = drop-columns simple-crud json-column-type index-unique-btree
 TEST_FILES = $(addsuffix .sql, $(TESTS))
 
 run-all:
