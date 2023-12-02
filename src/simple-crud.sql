@@ -1,17 +1,30 @@
-DROP TABLE IF EXISTS things;
-CREATE TABLE things (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR
+drop table if exists things;
+create table things
+(
+    id   serial primary key,
+    name varchar
 );
 
-INSERT INTO things (name) VALUES ('Pen');
-INSERT INTO things (name) VALUES ('Paper');
-INSERT INTO things (name) VALUES ('Folder');
-SELECT id, name FROM things;
+insert into things (name)
+values ('Pen');
 
-UPDATE things SET name = 'Pencil' WHERE id = 1;
-SELECT id, name FROM things;
+insert into things (name)
+values ('Paper'),
+       ('Folder');
 
-DELETE FROM things WHERE name LIKE '%er';
-SELECT count(id) FROM things;
+select id, name
+from things;
 
+update things
+set name = 'Pencil'
+where id = 1;
+
+select id, name
+from things;
+
+delete
+from things
+where name like '%er';
+
+select count(id)
+from things;

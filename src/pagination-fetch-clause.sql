@@ -1,25 +1,25 @@
-DROP TABLE IF EXISTS COURSES;
-CREATE TABLE COURSES
+drop table if exists courses;
+create table courses
 (
-    COURSE_ID   INT,
-    COURSE_NAME CHAR(36),
+    course_id   int,
+    course_name char(36),
 
-    PRIMARY KEY (COURSE_ID)
+    primary key (course_id)
 );
 
-INSERT INTO COURSES (COURSE_ID, COURSE_NAME)
-SELECT generate_series(1, 100000), gen_random_uuid();
+insert into courses (course_id, course_name)
+select generate_series(1, 100000), gen_random_uuid();
 
-EXPLAIN ANALYZE
-SELECT COURSE_ID, COURSE_NAME
-FROM COURSES
-WHERE (COURSE_ID) > 1000
-ORDER BY COURSE_ID
-    FETCH FIRST 1000 ROWS ONLY;
+explain analyze
+select course_id, course_name
+from courses
+where (course_id) > 1000
+order by course_id
+    fetch first 1000 rows only;
 
-EXPLAIN ANALYZE
-SELECT COURSE_ID, COURSE_NAME
-FROM COURSES
-WHERE (COURSE_ID) > 5000
-ORDER BY COURSE_ID
-    FETCH FIRST 1000 ROWS ONLY;
+explain analyze
+select course_id, course_name
+from courses
+where (course_id) > 5000
+order by course_id
+    fetch first 1000 rows only;

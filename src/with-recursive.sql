@@ -1,24 +1,25 @@
-DROP TABLE IF EXISTS directories;
-CREATE TABLE directories (
-  id SERIAL,
-  path TEXT NOT NULL,
-  parent_path_id INTEGER DEFAULT NULL
+drop table if exists directories;
+create table directories
+(
+    id             serial,
+    path           text not null,
+    parent_path_id integer default null
 );
 
-INSERT INTO directories (id, path, parent_path_id) VALUES 
-(1, '/projects', null),
-(2, '/hello-world', 1),
-(3, '/my-website', 1);
+insert into directories (id, path, parent_path_id)
+values (1, '/projects', null),
+       (2, '/hello-world', 1),
+       (3, '/my-website', 1);
 
-WITH RECURSIVE directories_tree AS (
-  SELECT path
-  FROM directories
-  WHERE parent_path_id IS NULL
+with recursive directories_tree as (select path
+                                    from directories
+                                    where parent_path_id is null
 
-  UNION
+                                    union
 
-  SELECT CONCAT(pd.path, d.path) AS path
-  FROM directories d
-  INNER JOIN directories pd ON pd.id = d.parent_path_id
-  ORDER BY path
-) SELECT * FROM directories_tree;
+                                    select concat(pd.path, d.path) as path
+                                    from directories d
+                                             inner join directories pd on pd.id = d.parent_path_id
+                                    order by path)
+select *
+from directories_tree;

@@ -1,29 +1,31 @@
-DROP TABLE IF EXISTS messages;
-CREATE TABLE messages(
-  id SERIAL PRIMARY KEY,
-  content TEXT,
-  from_email TEXT,
-  to_email TEXT,
+drop table if exists messages;
+create table messages
+(
+    id         serial primary key,
+    content    text,
+    from_email text,
+    to_email   text,
 
-  CONSTRAINT content_notnull CHECK (content IS NOT NULL),
-  CONSTRAINT from_email_notnull CHECK (from_email IS NOT NULL),
-  CONSTRAINT to_email_notnull CHECK (to_email IS NOT NULL)
+    constraint content_notnull check (content is not null),
+    constraint from_email_notnull check (from_email is not null),
+    constraint to_email_notnull check (to_email is not null)
 );
 
-SELECT column_name, data_type
-FROM information_schema.columns
-WHERE table_name = 'messages';
+select column_name, data_type
+from information_schema.columns
+where table_name = 'messages';
 
-ALTER TABLE messages DROP COLUMN IF EXISTS content;
+alter table messages
+    drop column if exists content;
 
-SELECT column_name, data_type
-FROM information_schema.columns
-WHERE table_name = 'messages';
+select column_name, data_type
+from information_schema.columns
+where table_name = 'messages';
 
-ALTER TABLE messages
-DROP COLUMN from_email,
-DROP COLUMN to_email;
+alter table messages
+    drop column from_email,
+    drop column to_email;
 
-SELECT column_name, data_type
-FROM information_schema.columns
-WHERE table_name = 'messages';
+select column_name, data_type
+from information_schema.columns
+where table_name = 'messages';

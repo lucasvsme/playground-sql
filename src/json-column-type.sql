@@ -1,16 +1,16 @@
-DROP TABLE IF EXISTS cars;
-CREATE TABLE cars (
-    id SERIAL PRIMARY KEY,
-    model VARCHAR,
-    attributes JSONB
+drop table if exists cars;
+create table cars
+(
+    id         serial primary key,
+    model      varchar,
+    attributes jsonb
 );
 
-INSERT INTO cars (model, attributes) VALUES
+insert into cars (model, attributes) values
 ('F250', '{"brand": "Ford","release_year": 2020,"category": "truck"}'),
 ('Pickup', '{"brand": "Toyota","release_year": 1990,"category": "truck"}'),
 ('Prius', '{"brand": "Toyota","release_year": 2020,"category": "compact"}');
 
-SELECT attributes->>'brand' AS brand, model
-FROM cars
-WHERE attributes->>'category' = 'truck';
-
+select attributes ->> 'brand' as brand, model
+from cars
+where attributes ->> 'category' = 'truck';
