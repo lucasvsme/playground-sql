@@ -37,7 +37,7 @@ run_single_sql_file() {
 }
 
 run_all_sql_files() {
-  for sql_file in *.sql; do
+  for sql_file in src/*.sql; do
     run_single_sql_file "$sql_file"
   done
 }
